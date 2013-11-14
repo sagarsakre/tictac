@@ -1,7 +1,7 @@
 This project is all about designing a tictac toe game.
 
 Features:
-* The game is written purely on CPP
+* The game is written purely on C
 * ncurses is used for graphics
 * three difficulty levels, easy, hard and super hard
 * two player using n/w interface
