@@ -25,6 +25,20 @@ int i,j;
 	printf("\n");
 	}
 }
+int check_inputs(int x, int y)
+{
+  //check for the upper boundries
+  if(x<0||x>2||y<0||y>2)
+  {
+    printf("ERROR: out of boundries");
+    return 1;
+  }
+  else if(matrix[x][y]==PLAYER_1||matrix[x][y]==PLAYER_2)
+  {
+	  printf("ERROR: %d %d is already filled Please select some other box\n",x,y);
+	  return 1;
+	}
+}
 int check_match(int PLAYER) 
 {
 	int i;
@@ -60,15 +74,13 @@ void main()
 		printMatrix();
 		printf("enter your choice (x,y) : ");
 		scanf("%d %d",&x,&y);
-		if(matrix[x][y]==PLAYER_1||matrix[x][y]==PLAYER_2)
-		{
-		  printf("ERROR: %d %d is already filled Please select some other box\n",x,y);
+		if(check_inputs(x,y))
 		  continue;
-		}
 		 else 
 		   break;
 		}
 		while(1);
+		
 		matrix[x][y]=PLAYER_1;
 		if(check_match(PLAYER_1))
 		{
@@ -76,16 +88,14 @@ void main()
 		printf("PLAYER_1 wins");
 		exit(0);
 		}
+
 		do{
 		printf("Matrix is \n");
 		printMatrix();
 		printf("enter your choice Player 2(x,y) : ");
 		scanf("%d %d",&x,&y);
-		if(matrix[x][y]==PLAYER_1||matrix[x][y]==PLAYER_2)
-		{
-		  printf("ERROR: %d %d is already filled Please select some other box\n",x,y);
+		if(check_inputs(x,y))
 		  continue;
-		}
 		 else 
 		   break;
 		}
