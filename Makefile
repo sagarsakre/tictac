@@ -15,4 +15,4 @@ all: ${OBJS}
 clean:
 	@echo "Cleaning up.."
 	-rm -rf *.o 	# - prefix for ignoring errors and continue execution
-	-rm tictac
+	-rm tictac a.out
