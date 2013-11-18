@@ -1,5 +1,5 @@
 #include "main.h"
-int matrix[3][3];
+
 void initMatrix()
 {
 	int i=0,j=0;
@@ -65,6 +65,7 @@ void main()
 {
 	int i,x=0,y=0,j;
 	initMatrix();
+	initgame();
 	for(i=0;i<4;i++)
 	{
 		do{

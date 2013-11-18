@@ -1,7 +1,5 @@
 #include"main.h"
-void hello()
-{
-printf("hello");
-}
-
-
+int 
+void computer_turn(){
+	if(LEVEL==1){
+	for
