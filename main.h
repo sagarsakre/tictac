@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include <stdlib.h>
 #define PLAYER_1 -1
 #define PLAYER_2 1
 #define EASY 	0

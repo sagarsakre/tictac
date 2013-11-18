@@ -87,7 +87,7 @@ void main()
 		printf("PLAYER_1 wins");
 		exit(0);
 		}
-
+		computer_turn();
 		do{
 		printf("Matrix is \n");
 		printMatrix();
