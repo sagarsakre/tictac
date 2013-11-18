@@ -1,6 +1,4 @@
-#include<stdio.h>
-#define PLAYER_1 -1
-#define PLAYER_2 1
+#include "main.h"
 int matrix[3][3];
 void initMatrix()
 {
