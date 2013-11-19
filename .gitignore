@@ -1,2 +1,5 @@
 *.o
 tictac
+a.out
+*.gch
+sample-programs
