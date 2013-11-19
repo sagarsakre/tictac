@@ -1,4 +1,29 @@
 #include"main.h"
+int is_danger(){
+  int i,j,sum,zeropos;
+  for(i=0;i<3;i++){
+	sum=0;
+	for(j=0;j<3;j++){
+	  if(matrix[i][j]==0)
+		zeropos=j;
+	  sum+=matrix[i][j];
+	}
+	
+	switch(sum){
+	  case PLAYER_2+PLAYER_2: 
+		printf("computer would play at %d %d ", i,zeropos);
+		return 1;
+		break;
+	  case PLAYER_1+PLAYER_1: 
+		printf("computer would play at %d %d ", i,zeropos);
+		return 1;
+		break;
+	  default:
+		printf("Continue ");
+	}
+  }
+}
+
 int is_row(int i)
 {
   int j,sum=0;
@@ -47,7 +72,8 @@ void computer_turn(){
 	}
 	
 	else if(LEVEL==2){
-	  printf("Level 2 selected");
+	  is_danger();
+	//  printf("Level 2 selected");
 	  for(i=0;i<3;i++)
 	  {
 		if(j=is_row(i)){
