@@ -66,10 +66,14 @@ void main()
 	int i,x=0,y=0,j;
 	initMatrix();
 	initgame();
-	for(i=0;i<4;i++)
+	for(i=0;i<8;i++)
 	{
+	  if(mCount>=9){
+		printf("match tie, ");
+		exit(0);
+	  }
 		do{
-		printf("Matrix is \n");
+		printf("\n Matrix is \n");
 		printMatrix();
 		printf("enter your choice (x,y) : ");
 		scanf("%d %d",&x,&y);
@@ -81,31 +85,39 @@ void main()
 		while(1);
 		
 		matrix[x][y]=PLAYER_1;
+		mCount++;
 		if(check_match(PLAYER_1))
 		{
 		printMatrix();
 		printf("PLAYER_1 wins");
 		exit(0);
 		}
-		computer_turn();
 		do{
-		printf("Matrix is \n");
-		printMatrix();
+		if(gametype==2){
+		  computer_turn(&x,&y);
+		  if(check_inputs(x,y))
+		  continue;
+		 else 
+		   break;
+		}
+		else{
 		printf("enter your choice Player 2(x,y) : ");
 		scanf("%d %d",&x,&y);
 		if(check_inputs(x,y))
 		  continue;
 		 else 
 		   break;
-		}
-		while(1);
-                matrix[x][y]=PLAYER_2;
+		} 
+		}while(1);
+		printf("\n Matrix is \n");
+		printMatrix();
+		matrix[x][y]=PLAYER_2;
+		mCount++;
 		if(check_match(PLAYER_2))
 		{
 		printMatrix();
 		printf("PLAYER_2 wins");
 		exit(0);
 		}
-	}
-	
+}
 }

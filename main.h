@@ -6,5 +6,6 @@
 #define MEDIUM 	1
 #define HARD 	2
 int LEVEL,gametype;
+static int mCount=0;
 int matrix[3][3];
 

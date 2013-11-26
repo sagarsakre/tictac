@@ -1,4 +1,5 @@
 #include"main.h"
+int XPOS,YPOS;
 int is_danger(){
   int i,j,sum,zeropos;
   for(i=0;i<3;i++){
@@ -11,17 +12,63 @@ int is_danger(){
 	
 	switch(sum){
 	  case PLAYER_2+PLAYER_2: 
-		printf("computer would play at %d %d ", i,zeropos);
+		printf("1 computer would play at %d %d ", i,zeropos);
+		XPOS=i;
+		YPOS=zeropos;
 		return 1;
 		break;
 	  case PLAYER_1+PLAYER_1: 
-		printf("computer would play at %d %d ", i,zeropos);
+		printf("2 computer would play at %d %d ", i,zeropos);
+		XPOS=i;
+		YPOS=zeropos;
 		return 1;
 		break;
 	  default:
-		printf("Continue ");
+		break;
 	}
   }
+
+  //check for verticle match
+  for(j=0;j<3;j++){
+	sum=0;
+	for(i=0;i<3;i++){
+	  if(matrix[i][j]==0)
+		zeropos=i;
+	  sum+=matrix[i][j];
+	}
+	
+	switch(sum){
+	  case PLAYER_2+PLAYER_2: 
+		printf("3 computer would play at %d %d ", zeropos,j);
+		XPOS=zeropos;
+		YPOS=j;
+		return 1;
+		break;
+	  case PLAYER_1+PLAYER_1: 
+		printf("4 computer would play at %d %d ",zeropos,j);
+		XPOS=zeropos;
+		YPOS=j;
+		return 1;
+		break;
+	  default:
+		break;
+	}
+  }
+
+// diagonal check
+  sum=0;
+  for(i=0;i<3;i++){
+	sum+=matrix[i][i];
+	if(matrix[i][i]==0)
+	   zeropos=i;
+  }
+  if((sum==PLAYER_2+PLAYER_2)||(sum==PLAYER_1+PLAYER_1)){
+	printf("5 computer would play at %d %d ", zeropos,zeropos);
+	XPOS=zeropos;
+	YPOS=zeropos;
+	return 1;
+  }
+return 0;
 }
 
 int is_row(int i)
@@ -63,18 +110,24 @@ void play_random()
 	do{
 	pos=rand()%9;
 	}while(check_inputs(pos/3,pos%3));
-	printf("computer will play at %d %d",pos/3,pos%3);
+	printf("6 computer will play at %d %d",pos/3,pos%3);
+	XPOS=pos/3;
+	YPOS=pos%3;
 }
-void computer_turn(){
+void computer_turn(int *x1,int *y1){
 	int pos,i,j;
 	if(LEVEL==1){
 	  play_random();
 	}
 	
 	else if(LEVEL==2){
-	  is_danger();
+	  if(is_danger()){
+			*x1=XPOS;
+		*y1=YPOS;
+		return;
+	  }
 	//  printf("Level 2 selected");
-	  for(i=0;i<3;i++)
+/*	  for(i=0;i<3;i++)
 	  {
 		if(j=is_row(i)){
 		  printf("computer will play at %d %d",i,j);
@@ -89,6 +142,11 @@ void computer_turn(){
 		  return;
 		}
 	  }
+	  */
 	  play_random();
+	  	*x1=XPOS;
+	*y1=YPOS;
 	}
+
+
 }
