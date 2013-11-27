@@ -43,20 +43,21 @@ int check_match(int PLAYER)
 //	compare horizaontally
 	for(i=0;i<3;i++)
 	{
-	if(matrix[i][0]==PLAYER&&matrix[i][1]==PLAYER&&matrix[i][2]==PLAYER)
-	return 1;
+	  if(matrix[i][0]==PLAYER&&matrix[i][1]==PLAYER&&matrix[i][2]==PLAYER)
+		return 1;
 	}
 //	compare vertically
-	for(i=0;i<3;i++)
-	{
-	if(matrix[0][i]==PLAYER&&matrix[1][i]==PLAYER&&matrix[2][i]==PLAYER)
-	return 1;
+
+	for(i=0;i<3;i++){
+	  if(matrix[0][i]==PLAYER&&matrix[1][i]==PLAYER&&matrix[2][i]==PLAYER)
+		return 1;
 	}
 	if(matrix[0][0]==PLAYER&&matrix[1][1]==PLAYER&&matrix[2][2]==PLAYER)
-	return 1;
+	  return 1;
 	
 	if(matrix[0][2]==PLAYER&&matrix[1][1]==PLAYER&&matrix[2][0]==PLAYER)
-	return 1;
+	  return 1;
+	
 	return 0;
 
 		
@@ -66,6 +67,13 @@ void main()
 	int i,x=0,y=0,j;
 	initMatrix();
 	initgame();
+	//printf("initgame over");
+	if(toss()==PLAYER_1)
+	{
+	}
+	else{
+	  goto compturn;
+	}
 	for(i=0;i<8;i++)
 	{
 	  if(mCount>=9){
@@ -92,8 +100,10 @@ void main()
 		printf("PLAYER_1 wins");
 		exit(0);
 		}
+compturn:
 		do{
 		if(gametype==2){
+		  sleep_me();
 		  computer_turn(&x,&y);
 		  if(check_inputs(x,y))
 		  continue;
@@ -110,7 +120,7 @@ void main()
 		} 
 		}while(1);
 		printf("\n Matrix is \n");
-		printMatrix();
+		//printMatrix();
 		matrix[x][y]=PLAYER_2;
 		mCount++;
 		if(check_match(PLAYER_2))

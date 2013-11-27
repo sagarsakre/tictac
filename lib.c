@@ -1,4 +1,5 @@
 #include"main.h"
+void sleep_me();
 int initgame()
 {
 	printf("Hello, Welcome to tictactoe Game, Please enter your choice\n");
@@ -18,3 +19,68 @@ int initgame()
 	return 2;
 	}
 }
+int
+toss()
+{
+  srand(time(NULL));
+  printf(" Toss betwen PLAYER_1 and PLAYER_2");
+  sleep_me();
+  int itoss;
+  char bchar;
+  int i=0;
+  int j=rand()%1000;
+  for(;j>=0;j--){
+	if(i){
+	  itoss=PLAYER_1;
+	}
+	else{
+	  itoss=PLAYER_2;
+	}
+	  i=!i;
+	}
+	if(itoss==PLAYER_1){
+	  printf("\nPlayer 1 won the toss its his turn");
+	}
+	else{
+	  printf("\nPlayer 2 won the toss its his turn");
+	}
+	
+	return itoss;
+}
+void sleep_me()
+{
+  int i=1;
+  int j;
+  int k;
+  printf("\n[ | ]");
+  printf("\b\b\b");
+  for(;i>0;i--)
+  {
+	printf("|");
+	fflush(stdout);
+	sleep(1);
+	printf("\b");
+	fflush(stdout);
+	printf("/");
+	fflush(stdout);
+	sleep(1);
+	printf("\b");
+	fflush(stdout);
+	printf("--");
+	fflush(stdout);
+	sleep(1);
+	printf("\b\b");
+	fflush(stdout);
+	printf("\\ ");
+	fflush(stdout);
+	sleep(1);
+	printf("\b\b");
+	fflush(stdout);
+  }
+  printf(" ]");
+  fflush(stdout);
+}
+	
+	
+	
+	

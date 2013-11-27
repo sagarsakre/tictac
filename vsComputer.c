@@ -12,13 +12,13 @@ int is_danger(){
 	
 	switch(sum){
 	  case PLAYER_2+PLAYER_2: 
-		printf("1 computer would play at %d %d ", i,zeropos);
+		//printf("1 computer would play at %d %d ", i,zeropos);
 		XPOS=i;
 		YPOS=zeropos;
 		return 1;
 		break;
 	  case PLAYER_1+PLAYER_1: 
-		printf("2 computer would play at %d %d ", i,zeropos);
+		//printf("2 computer would play at %d %d ", i,zeropos);
 		XPOS=i;
 		YPOS=zeropos;
 		return 1;
@@ -39,13 +39,13 @@ int is_danger(){
 	
 	switch(sum){
 	  case PLAYER_2+PLAYER_2: 
-		printf("3 computer would play at %d %d ", zeropos,j);
+		//printf("3 computer would play at %d %d ", zeropos,j);
 		XPOS=zeropos;
 		YPOS=j;
 		return 1;
 		break;
 	  case PLAYER_1+PLAYER_1: 
-		printf("4 computer would play at %d %d ",zeropos,j);
+		//printf("4 computer would play at %d %d ",zeropos,j);
 		XPOS=zeropos;
 		YPOS=j;
 		return 1;
@@ -63,7 +63,7 @@ int is_danger(){
 	   zeropos=i;
   }
   if((sum==PLAYER_2+PLAYER_2)||(sum==PLAYER_1+PLAYER_1)){
-	printf("5 computer would play at %d %d ", zeropos,zeropos);
+	//printf("5 computer would play at %d %d ", zeropos,zeropos);
 	XPOS=zeropos;
 	YPOS=zeropos;
 	return 1;
@@ -106,11 +106,12 @@ int is_col(int j)
 
 void play_random()
 {
+  srand(time(NULL));
   int pos;
 	do{
 	pos=rand()%9;
 	}while(check_inputs(pos/3,pos%3));
-	printf("6 computer will play at %d %d",pos/3,pos%3);
+	//printf("6 computer will play at %d %d",pos/3,pos%3);
 	XPOS=pos/3;
 	YPOS=pos%3;
 }
